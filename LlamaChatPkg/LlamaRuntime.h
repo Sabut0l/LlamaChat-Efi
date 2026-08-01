@@ -1,3 +1,4 @@
+//Copyright (c) 2026 Sabut0l
 /* =========================================================================
  * LlamaRuntime.h  --  Freestanding C-runtime shims for the EFI LLM chat.
  *
