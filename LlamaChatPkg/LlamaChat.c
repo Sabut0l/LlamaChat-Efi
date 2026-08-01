@@ -1,3 +1,4 @@
+//Copyright (c) 2026 Sabut0l
 /* =========================================================================
  * LlamaChat.c  --  UEFI application entry point: chat with a mini Llama-2
  * model (karpathy/llama2.c format) directly in the EFI shell.
