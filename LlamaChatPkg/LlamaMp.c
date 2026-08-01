@@ -1,3 +1,4 @@
+//Copyright (c) 2026 Sabut0l
 /* =========================================================================
  * LlamaMp.c  --  Persistent MP Services worker pool for parallel matmul,
  * hardened for real hardware.
