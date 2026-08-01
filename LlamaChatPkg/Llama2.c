@@ -1,3 +1,4 @@
+//Copyright (c) 2026 Sabut0l
 /* =========================================================================
  * Llama2.c  --  Llama-2 transformer inference in the EFI environment.
  * Port of karpathy/llama2.c (run.c + runq.c). Differences from the original:
