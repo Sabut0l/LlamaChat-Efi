@@ -1,3 +1,5 @@
+# LlamaChat-Efi - MiniLLM Chat EDK2 (EFI) 
+
 This repository contains a port of karpathy/llama2.c (run.c + runq.c) for EDK2 (EFI), with a focus on chatting with the model. The EFI application is written for x64 in debug mode.
 Chatting capabilities:
   1) Execute commands to open a file or display `secret.txt` (password-protected): use the `<CMD>/<CMD>` marker
