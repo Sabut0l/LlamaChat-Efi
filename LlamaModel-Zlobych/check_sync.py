@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#Copyright (c) 2026 Sabut0l
 """
 check_sync.py — ГЛАВНАЯ ЗАЩИТА ОТ ПОВТОРА ПРОВАЛА.
 
