@@ -5,15 +5,8 @@ Llama-2 в формате [karpathy/llama2.c](https://github.com/karpathy/llama2
 прямо из UEFI, без ОС. Интерфейс поддерживает смешанный ввод и вывод UTF-8
 на английском и русском языках.
 
-## Что взято из проекта Cryptor
 
-| Компонент | Откуда в Cryptor | Куда попало здесь |
-|---|---|---|
-| Многопоточность через `EFI_MP_SERVICES_PROTOCOL` (StartupThisAP, spin-ожидание, MemoryFence/CpuPause) | `InitCryptoWorkers` / `ApCryptoTask` / `StartCryptoJobs` | `LlamaMp.c` — но пул сделан **постоянным** (AP крутятся в цикле и ждут задач), т.к. matmul вызывается тысячи раз на токен и одноразовый запуск AP был бы слишком дорог |
-| Дебаг-вывод в debugcon порт 0x402 (spin-lock, hex/dec печать, таймстампы по TSC) | дебаг-блок `1-Cryptor.c` | `LlamaDebug.c/h` (макросы `DBG`, `DBG_HEX`, `DBG_DEC`, `DBG_AP`) |
-| MSVS-макросы: `my_memset/my_memcpy/my_memmove` → `SetMem`/`CopyMem` + `#pragma comment(linker, "/alternatename:...")` + `_fltused` | CRT-шимы Cryptor | `LlamaRuntime.c` |
-
-## Исправления многопоточности (эта версия)
+## Исправления многопоточности
 
 На реальном железе прошивка не обязана передавать AP с готовым FP/SSE-состоянием,
 и первый же float на AP давал исключение — AP умирал, а BSP вечно ждал `Ack`
@@ -55,7 +48,7 @@ Llama-2 в формате [karpathy/llama2.c](https://github.com/karpathy/llama2
   только если даже сторожевой таймер не спасает (прошивка виснет с
   выключенными прерываниями).
 
-## Кириллица в EFI Shell (эта версия)
+## Кириллица в EFI Shell
 
 Вывод кириллицы переведён на метрики OVMF (GraphicsConsoleDxe):
 
@@ -92,7 +85,7 @@ LlamaChatPkg/
 └── LlamaUi.c/h        — текстовая EFI-консоль, UTF-8 и переключение раскладки
 ```
 
-### Отличия ��орта от оригинального run.c
+### Отличия порта от оригинального run.c
 
 - нет `mmap`/`fopen` — чекпойнт и токенизатор читаются целиком через `SimpleFileSystem`;
 - нет libm — своя софт-математика (`LmExpf`, `LmSqrtf`, `LmPowf`, `LmSinf`, `LmCosf`);
