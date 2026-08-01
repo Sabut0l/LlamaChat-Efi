@@ -1,3 +1,4 @@
+//Copyright (c) 2026 Sabut0l
 /* OVMF-style 8x19 bitmap Cyrillic glyphs (EFI_NARROW_GLYPH metrics),
  * redrawn to match MdeModulePkg GraphicsConsoleDxe (LaffStd) proportions:
  * 2px stems, capitals rows 4..13, lowercase x-height rows 7..13,
