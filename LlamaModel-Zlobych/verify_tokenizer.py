@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#Copyright (c) 2026 Sabut0l
 """
 verify_tokenizer.py — доказывает, что ТОКЕНИЗАЦИЯ ПРИ ОБУЧЕНИИ (Python,
 sentencepiece) СОВПАДАЕТ С ТОКЕНИЗАЦИЕЙ ПРИ ИНФЕРЕНСЕ (C, Llama2.c: Encode).
