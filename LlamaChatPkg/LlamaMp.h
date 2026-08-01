@@ -1,3 +1,4 @@
+//Copyright (c) 2026 Sabut0l
 /* =========================================================================
  * LlamaMp.h  --  Multi-core matmul using EFI MP Services (Application
  * Processors). Persistent worker pool: StartupThisAP is called once per AP
