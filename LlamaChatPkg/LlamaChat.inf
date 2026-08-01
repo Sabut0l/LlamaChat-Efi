@@ -1,0 +1,57 @@
+## @file
+#  LlamaChat -- chat with a mini Llama-2 model (karpathy/llama2.c port) in UEFI.
+#
+#  
+#    - MP Services multithreading (parallel matmul on APs)
+#    - debugcon port 0x402 (optional on-disk output is disabled in UefiMain)
+#    - MSVC CRT intrinsic shims (memset/memcpy/memmove via /alternatename)
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = LlamaChat
+  FILE_GUID                      = D9946FB5-5DFA-4F60-BFF3-A247CEA12743
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = UefiMain
+
+[Sources]
+  LlamaChat.c
+  LlamaCmd.c
+  Llama2.c
+  LlamaMp.c
+  LlamaRuntime.c
+  LlamaDebug.c
+  LlamaUi.c
+  LlamaCyrFont.h
+
+[Packages]
+  MdePkg/MdePkg.dec
+
+[LibraryClasses]
+  UefiApplicationEntryPoint
+  UefiLib
+  UefiBootServicesTableLib
+  MemoryAllocationLib
+  DevicePathLib
+  BaseMemoryLib
+  BaseLib
+  SynchronizationLib
+  IoLib
+  PrintLib
+
+[Protocols]
+  gEfiLoadedImageProtocolGuid
+  gEfiSimpleFileSystemProtocolGuid
+  gEfiMpServiceProtocolGuid
+  gEfiSimpleTextInputExProtocolGuid
+  gEfiGraphicsOutputProtocolGuid
+  gEfiPciIoProtocolGuid
+  gEfiBlockIoProtocolGuid
+
+[Guids]
+  gEfiFileInfoGuid
+
+[BuildOptions]
+  GCC:*_*_*_CC_FLAGS  = -mno-red-zone
+  MSFT:*_*_*_CC_FLAGS = /wd4201 /wd4324 /wd4244 /wd4310 /wd4389 /wd4706 -DUSE_COMPILER_INTRINSICS_LIB -D_CRT_SECURE_NO_WARNINGS
