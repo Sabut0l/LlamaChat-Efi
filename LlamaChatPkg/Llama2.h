@@ -1,3 +1,4 @@
+//Copyright (c) 2026 Sabut0l
 /* =========================================================================
  * Llama2.h  --  Llama-2 transformer inference (port of karpathy/llama2.c
  * run.c + runq.c) to the EFI environment. libc/mmap/printf/pthreads removed;
