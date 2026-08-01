@@ -1,3 +1,4 @@
+//Copyright (c) 2026 Sabut0l
 /* =========================================================================
  * LlamaUi.c -- EFI Shell text console with UTF-8/Cyrillic conversion.
  *
