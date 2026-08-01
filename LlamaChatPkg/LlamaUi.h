@@ -1,3 +1,4 @@
+//Copyright (c) 2026 Sabut0l
 #ifndef LLAMA_UI_H
 #define LLAMA_UI_H
 
